@@ -46,9 +46,10 @@
               <div class="novo_user">
                 Novo usuario? <span id="rexistrar" name="novo_user">rexístrate</span>
                 <div id="rexistrarme">
-                 <form name="rexistro" action="/rexistro" method="post">
+                 <form name="rexistro" action="/rexistro" method="post" encType="multipart/form-data">
                    <input type="text" placeholder="Introduce o teu usuario"> 
-                   <input type="text" placeholder="Introduce o teu password"> 
+                   <input type="text" placeholder="Introduce o teu password">
+                   <input type="file" name="sampleFile" />
                    <button class="texto-article1-fillo2 un-margin-center">Rexistrarme</button>
                  </form>
                </div>

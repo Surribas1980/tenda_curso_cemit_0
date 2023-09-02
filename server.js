@@ -34,7 +34,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
 app.use(cors())
 app.use(fileUpload())
-/*app.post('/imagen', function(req, res) {
+
+// Accedo o arquivo estático
+app.use(express.static(path.join(__dirname, "static")));
+
+//endpoints
+
+app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
+app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos)
+app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos)
+app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda)
+/** Rexistro usuario */
+app.post('/imagen', function(req, res) {
   let sampleFile;
   let uploadPath;
 
@@ -55,16 +66,6 @@ app.use(fileUpload())
 
     res.send('File uploaded!');
   });
-});*/
-// Accedo o arquivo estático
-app.use(express.static(path.join(__dirname, "static")));
-
-//endpoints
-
-app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
-app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos)
-app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos)
-app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda)
-
+});
 //START SERVER
 app.listen(3000, messageServerOn);
