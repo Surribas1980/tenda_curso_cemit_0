@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,700&display=swap');
+.carrito{
+  width:15px;
+  fill:#F6F4F3;
+}
+.user{
+  width:25px;
+  cursor:pointer;
+}
+body{
+  background-color: #f6f4f3;
+  font-family: montserrat;
+  font-weight: 700;
+}
+input,textarea{
+  background-color:#D1C8C1;
+  color:black;
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  border: transparent;
+  padding: 1vw;
+  flex: 6;
+  font-size: 1vw;
+}
+textarea{
+  height: 10vw;
+}
+h1,h2,h3{
+  margin:0;
+}
+h1[name="contacto"]{
+  font-size:35px;
+}
+
+h3[name="contacto"]{
+  
+  font-style:italic;
+}
+h3[name="comentario"]{
+  
+  /*font-style:italic;*/
+  color:gray;
+  font-size:12px;
+  font-weight:bold;
+}
+h3[name="producto"]{
+  
+  /*font-style:italic;*/
+  color:black;
+  font-size:12px;
+  font-weight:bold;
+}
+.engadir-carrito{
+  background-color:#86654B;
+  padding:1vw;
+  color:#F6F4F3;
+  font-size:16px;
+  cursor:pointer;
+}
+span[name="money"]{
+  display:block;
+  font-size:18px;
+  font-weight:bolder;
+}
+form > div{
+  display: flex;
+  margin-bottom:2vw;
+    align-items: center;
+}
+main[name="paxina-tenda"]{
+  display: unset;
+}
+label{
+  margin-right: 1vw;
+  font-family:'Popins',sans-serif;
+  font-weight:100;
+  flex: 1.5;
+}
+q{
+  font-family:'Poppins',sans-serif;
+  font-weight:400;
+  text-align:justify;
+  
+}
+.imaxe-sobre-nos{
+  width: 48vw;
+}
+.parrafo-sobre-nos{
+  font-family:'Poppins',sans-serif;
+  font-weight:100;
+  text-align:justify;
+}
+.parrafo-sobre-nos[name="tenda"]{
+  text-align:center;
+}
+.un-margin-left{
+  margin-left: 25vw;
+}
+.paxina-sobre-nos{
+  display:flex;
+  gap:3vw;
+  flex-direction: row;
+  
+}
+
+ul[name = "navegacion"]{
+  list-style:none;
+  display:flex;
+  align-items: center;
+  font-size: 12px;
+  justify-content: space-around;
+}
+.un-br{
+  display:block;
+  font-family:'Montserrat', sans-serif;
+  font-size:25px;
+}
+#show_menu{
+  width: 32px;
+  display:none;
+}
+.rexistro{
+  position:relative;
+}
+#navegacion_user{
+  position: absolute;
+    display: none;
+    z-index: 2;
+    top: 30px;
+    right: 0px;
+    border: 1px solid gray;
+    background-color: #f6f4f3;
+}
+.foto_home{
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+p[name="textoFotoHome"]{
+  position: absolute;
+  bottom:0px;
+  left: 18px;
+  z-index: 2;
+}
+.imaxen-cabeceira{
+  position:relative;
+  
+}
+h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;
+}
+.texto-article1-fillo1{
+  font-family: 'Poppins', sans-serif;
+  font-weight:400;
+  display:flex;
+  flex-direction:column;
+  text-align: justify;
+  color:#31241e;
+}
+.texto-article1-fillo2{
+  font-family: 'Montserrat', sans-serif;
+  font-weight:700;
+  background-color: #d1c8c1;
+  color: white;
+  border:1px solid transparent;
+  border-radius: 20px;
+  width: 10rem;
+  padding: 0.8vh;
+  text-align: center;
+  text-transform: uppercase;
+  cursor:pointer;
+}
+.texto-article1{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+}
+hr[name="tenda"]{
+  width: 100%;
+  background: orange;
+}
+@media (min-width:600px){
+  nav[name="navegacion"]{
+    display:none;
+  }
+  main{
+    display:flex;
+    flex-direction:column;
+    gap:2vw;
+    padding:2vw;
+  }
+  .section-paxina-cursos{
+    display:flex;
+    gap:2vw;
+  }
+  .section-paxina-cursos > img{
+    flex:3;
+  }
+  .section-paxina-cursos > article{
+    flex:1;
+  }
+  .seccion-texto-paxina-contacto{
+    flex:1.5;
+    
+  }
+  .seccion-mail-paxina-contacto{
+    flex:1;
+  }
+  .seccion-mostras-tenda{
+    display:flex;
+    justify-content:space-around;
+    
+  }
+  .seccion-mostras-tenda > div {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align: center;
+    gap: 0.7vw;
+  }
+  .producto{
+    width:100%;
+  }
+  body{
+    padding:4vh
+  }
+  .o-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .case-footer{
+    display:flex;
+    gap:1vw;
+  }
+  .texto-article1{
+    flex:3;
+  }
+  .fotos-case-footer{
+    flex:1;
+    background-color:green;
+    /*padding:2px;*/
+  }
+  .paxina-contacto{
+    display:flex;
+    flex-direction:row;
+    gap:3vw;
+    margin-top:10vh;
+  }
+  .logo{
+    flex:1;
+  }
+ h1[name="tenda"]{
+   font-family:'Montserrat',sans-serif;
+   font-size:60px;
+   font-weight:700;
+   font-style:italic;
+   text-transform:uppercase;
+   /*text-align:center;*/
+ }
+  .seccion-paxina-tenda > div{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:60%;
+  }
+  .seccion-paxina-tenda{
+    padding:2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 600px){
+  #navegacion_user{
+    right:unset;
+  }
+  .seccion-paxina-tenda{
+    text-align:center;
+  }
+  .producto{
+    width:100%;
+  }
+  .seccion-mostras-tenda > div {
+    /*flex: 1;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7vw;
+}
+  .seccion-mostras-tenda{
+    display: flex;
+    gap: 3vw;
+    flex-direction:column;
+  }
+  form > div{
+    margin-bottom: 4vw;
+  }
+  .dando-altura-botom{
+    font-size: 25px;
+  }
+  .paxina-contacto{
+    flex-direction:columun;
+     gap:2vw;
+  }
+  .paxina-cursos{
+    display:flex;
+    flex-direction:column;
+    gap:4vw;
+  }
+  .paxina-sobre-nos{
+    flex-direction:column;
+  }
+  .section-paxina-cursos{
+    flex-direction:column;
+  }
+  .seccion-mail-paxina-contacto{
+    margin-top:10vh;
+  }
+  .imaxe-sobre-nos {
+    width: 100%;
+  }
+  .un-br{
+    font-size:3vw;
+  }
+  .logo > h1 {
+    display:none;
+  }
+  .logo{
+    position: absolute;
+    top: -10px;
+    right: 50px;
+  }
+  .logo > img{
+    position: absolute;
+    top: 0;
+    left:0;
+  }
+  ul[name="navegacion"]{
+    display: none;
+    padding:0;
+  }
+  
+  #show_menu{
+    display: block;
+    width: 32px;
+    background-color: #f6f4f3;
+    cursor:pointer;
+  }
+  .o-header{
+    display: flex;
+    flex-direction:column;
+    position:relative;
+    /*align-items: center;*/
+  }
+  .case-footer{
+    display:flex;
+    flex-direction:column;
+  }
+  input,textarea{
+    font-size: 3vh;
+    width: 100%;
+  }
+  textarea {
+    height: 30vh;
+  }
+}
+
+li{
+  cursor:pointer;
+  padding:10px;
+  
+}
+.colores{
+  color: #86654b;
+  font-size: 16px;
+}
+.logo{
+  display: flex;
+  align-items: center;
+}
+
+hr{
+  /*color:#31241e;*/
+  color: antiquewhite;
+}
