@@ -5,8 +5,25 @@
   width:15px;
   fill:#F6F4F3;
 }
+li[name="nav_user"]{
+  font-family:"Poppins",sans-serif;
+  font-weight:400;
+  list-style:none;
+  padding:2vw;
+}
+span[name="novo_user"]{
+  font-style:italic;
+  font-weight: 700;
+  cursor:pointer;
+}
+.novo_user{
+  padding:2vw;
+  width:max-content;
+  font-family: "Poppins",sans-serif;
+  font-weight: 400;
+}
 .user{
-  width:25px;
+  width:30px;
   cursor:pointer;
 }
 body{
@@ -118,7 +135,7 @@ ul[name = "navegacion"]{
   font-size:25px;
 }
 #show_menu{
-  width: 32px;
+  
   display:none;
 }
 .rexistro{
@@ -132,6 +149,10 @@ ul[name = "navegacion"]{
     right: 0px;
     border: 1px solid gray;
     background-color: #f6f4f3;
+}
+#navegacion_user > ul{
+  padding:0;
+  margin:0;
 }
 .foto_home{
   width: 100%;
@@ -341,7 +362,7 @@ hr[name="tenda"]{
   }
   .logo > img{
     position: absolute;
-    top: 0;
+    top: 19px;
     left:0;
   }
   ul[name="navegacion"]{
@@ -351,7 +372,7 @@ hr[name="tenda"]{
   
   #show_menu{
     display: block;
-    width: 32px;
+    width: 30px;
     background-color: #f6f4f3;
     cursor:pointer;
   }
