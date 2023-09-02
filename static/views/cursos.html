@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilo.css">
     <title>Tenda</title>
+    <script async type="module" src="./javascript/login.js"></script>
     <script async type="module" src="./javascript/paxina_tenda.js"></script>
     <script async type="module" src="./javascript/main.js"></script>
   </head>
@@ -31,10 +32,26 @@
           <div class="rexistro">
             <img id="usuarios" src="../imagenes/user.png" class="user" alt="user">
             <nav id="navegacion_user" name="usuarios">
-              <ul>
-                <li name="nav_user">Loguéate</li>
+             <ul>
+                <li id="logueate" name="nav_user">Loguéate</li>
+               <div id="login">
+                 <form name="login" action="/login" method="post">
+                   <input type="text" placeholder="Introduce o teu usuario"> 
+                   <input type="password" placeholder="Introduce o teu password"> 
+                   <button class="texto-article1-fillo2 un-margin-center">Entrar</button>
+                 </form>
+               </div>
               </ul>
-              <div class="novo_user">Novo usuario? <span name="novo_user">rexístrate</span></div>
+              <div class="novo_user">
+                Novo usuario? <span id="rexistrar" name="novo_user">rexístrate</span>
+                <div id="rexistrarme">
+                 <form name="rexistro" action="/rexistro" method="post">
+                   <input type="text" placeholder="Introduce o teu usuario"> 
+                   <input type="text" placeholder="Introduce o teu password"> 
+                   <button class="texto-article1-fillo2 un-margin-center">Rexistrarme</button>
+                 </form>
+               </div>
+              </div>
             </nav>
           </div>
         </div>
