@@ -11,6 +11,7 @@ li[name="nav_user"]{
   list-style:none;
   padding:2vw;
 }
+
 span[name="novo_user"]{
   font-style:italic;
   font-weight: 700;
@@ -86,6 +87,20 @@ form > div{
   margin-bottom:2vw;
     align-items: center;
 }
+form[name="login"],form[name="rexistro"]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+}
+
+.un-margin-center{
+  margin:center;
+}
+#login,#rexistrarme{
+ display:none 
+}
+
 main[name="paxina-tenda"]{
   display: unset;
 }
@@ -206,6 +221,26 @@ hr[name="tenda"]{
   width: 100%;
   background: orange;
 }
+
+li{
+  cursor:pointer;
+  padding:10px;
+  
+}
+.colores{
+  color: #86654b;
+  font-size: 16px;
+}
+.logo{
+  display: flex;
+  align-items: center;
+}
+
+hr{
+  /*color:#31241e;*/
+  color: antiquewhite;
+}
+
 @media (min-width:600px){
   nav[name="navegacion"]{
     display:none;
@@ -300,6 +335,18 @@ hr[name="tenda"]{
   }
 }
 @media (max-width: 600px){
+  form[name="login"] input{
+    width: min-content;
+    padding:2vw;
+    margin:2vw;
+    font-size:16px;
+  }
+  form[name="rexistro"] input{
+    width: min-content;
+    padding:2vw;
+    margin:2vw;
+    font-size:16px;
+  }
   #navegacion_user{
     right:unset;
   }
@@ -393,23 +440,4 @@ hr[name="tenda"]{
   textarea {
     height: 30vh;
   }
-}
-
-li{
-  cursor:pointer;
-  padding:10px;
-  
-}
-.colores{
-  color: #86654b;
-  font-size: 16px;
-}
-.logo{
-  display: flex;
-  align-items: center;
-}
-
-hr{
-  /*color:#31241e;*/
-  color: antiquewhite;
 }
