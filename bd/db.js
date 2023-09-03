@@ -35,13 +35,14 @@ function createTable(db) {
   precio_prod real
 );
 
-create table if not exists user (
+create table if not exists usuarios (
   id_cli integer,
   rol_cli varchar(9),
   pwd_cli varchar(9),
+  dni_cli varchar(9)
   img_cli varchar(9),
   nombre_cli varchar(50),
-  mail_cli varchar(50) primary key
+  email_cli varchar(50) primary key
 );
 
 create table if not exists producto_pedido(
@@ -57,7 +58,7 @@ create table if not exists pedido(
   mail_cli_pedi varchar(50),
   precio_total_pedi real,
   id_cesta_pedi integer,
-  FOREIGN KEY(mail_cli_pedi) REFERENCES user(mail_cli),
+  FOREIGN KEY(mail_cli_pedi) REFERENCES usuarios(mail_cli),
   FOREIGN KEY(id_cesta_pedi) REFERENCES cesta(id_producto_comprado_cest)
 );
 
@@ -72,3 +73,5 @@ create table if not exists cesta(
 
   `)
 }
+
+module.exports = createDbConnection;

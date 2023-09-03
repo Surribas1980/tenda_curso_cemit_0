@@ -45,12 +45,50 @@ app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos)
 app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos)
 app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda)
 /** Rexistro usuario */
-app.post('/imagen', function(req, res) {
+const db = require('./bd/db')
+app.post('/rexistro', function(req, res) {
   let sampleFile;
   let uploadPath;
-
+  const conn = db.open()
+  const body = req.body;
+  
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
+  }
+  if(req.body != undefined){
+    
+
+    conn.serialize(function (){
+          conn.run(`INSERT INTO usuarios (dni_cli,pwd_cli,nombre_cli,email_cli) VALUES (?,?,?)`,[`${body.dni}`,`${body.pwd}`,`${body.usuario}`,`${body.email}`],
+            function (error) {
+              if (error) {
+                console.error(error.message);
+              }
+              
+            }
+          );
+        
+         conn.each(`SELECT * FROM usuarios`, (error, row) => {
+          if (error) {
+            throw new Error(error.message);
+          }
+          console.log(row);
+        },()=>{
+          res.redirect('/');
+          
+        });//conn.each
+
+              
+        });//conn.serialize
+
+
+
+
+
+
+    
+    res.redirect('/rexistro');
+    next();
   }
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
