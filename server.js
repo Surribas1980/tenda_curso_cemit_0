@@ -30,8 +30,8 @@ const {	messageServerOn,
        } = require("./principal-servers/helpers/funciones")
 
 //Preparo as peticións
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));//parsea solo string
 app.use(cors())
 app.use(fileUpload())
 
