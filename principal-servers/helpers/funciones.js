@@ -84,13 +84,63 @@ const BBDD_rexistroUser = (req, res,next)=>{
     next();
   }
 }
-
+const lerUsuario = (req,res,next)=>{
+  const body = req.body;
+  console.log('req.body: ',req.body)
+  if(req.body.hasOwnProperty("user")){
+    db.serialize(function (){
+          
+        
+        db.get(`SELECT * FROM usuarios WHERE nombre_cli = ? and pwd_cli = ? and email_cli = ?`,[`${body.user}`,`${body.pwd}`,`${body.email}`], (error, row) => {
+          if (error) {
+            throw new Error(error.message);
+          }
+          console.log(row);
+          let datosSend = {
+            nome: row.nombre_cli,
+            pwd: row.pwd,
+            email: row.email
+          }
+           console.log('estou en lerUsuario ',datosSend);
+            //res.send(datosSend)
+           req.datosSend = datosSend;
+    
+              //next();
+         });//db.get
+        db.run(`CREATE VIEW IF NOT EXISTS usuarioslogueados as select * from usuarios where nombre_cli = '${body.user}'`,(error)=>{
+           if (error) {
+            throw new Error(error.message);
+          }
+          next();
+        })  
+        });//db.serialize
+  }
+  next();
+}
+const leoUsuarioLogueado = function(req,res){
+  
+console.log('está en leoUsuarioLogueado : ');
+  db.get(`SELECT * FROM usuarioslogueados ORDER BY nome ASC`,(error,row)=>{
+    if (error) {
+            throw new Error(error.message);
+          }
+    console.log('está sacando datos: ',row);
+          let datosSend = {
+            nome: row.user,
+            email: row.email
+            
+          }
+    
+    res.send(datosSend)
+  })
+}
 const endPoints = {
   VerPaxinaContacto: '/contacto',
   VerPaxinaCursos:'/cursos',
   VerPaxinaSobreNos:'/sobrenos',
   VerPaxinaTenda:'/tenda',
-  RexistroUser:'/rexistro'
+  RexistroUser:'/rexistro',
+  LoginUser:'/login'
 }
 module.exports = {
 	messageServerOn,
@@ -99,5 +149,7 @@ module.exports = {
   VerPaxinaCursos,
   VerPaxinaSobreNos,
   VerPaxinaTenda,
-  BBDD_rexistroUser
+  BBDD_rexistroUser,
+  lerUsuario,
+  leoUsuarioLogueado
   }

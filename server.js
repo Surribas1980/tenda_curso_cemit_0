@@ -27,7 +27,8 @@ const {	messageServerOn,
        VerPaxinaCursos,
        VerPaxinaSobreNos,
        VerPaxinaTenda,
-       BBDD_rexistroUser
+       BBDD_rexistroUser,
+       lerUsuario
        } = require("./principal-servers/helpers/funciones")
 
 //Preparo as peticións
@@ -42,11 +43,11 @@ app.use(express.static(path.join(__dirname, "static")));
 //endpoints
 
 //app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
-app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos);
-app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos);
-app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda);
+app.get(endPoints.VerPaxinaCursos,lerUsuario,VerPaxinaCursos);
+app.get(endPoints.VerPaxinaSobreNos,lerUsuario,VerPaxinaSobreNos);
+app.get(endPoints.VerPaxinaTenda,lerUsuario,VerPaxinaTenda);
 /** Rexistro usuario */
 app.post(endPoints.RexistroUser,BBDD_rexistroUser);
-app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
+app.get(endPoints.VerPaxinaContacto,lerUsuario,VerPaxinaContacto)
 //START SERVER
 app.listen(3000, messageServerOn);
