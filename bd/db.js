@@ -39,7 +39,7 @@ create table if not exists usuarios (
   id_cli integer,
   rol_cli varchar(9),
   pwd_cli varchar(9),
-  dni_cli varchar(9)
+  dni_cli varchar(9),
   img_cli varchar(9),
   nombre_cli varchar(50),
   email_cli varchar(50) primary key
@@ -74,4 +74,4 @@ create table if not exists cesta(
   `)
 }
 
-module.exports = createDbConnection;
+module.exports = createDbConnection();

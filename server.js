@@ -40,60 +40,22 @@ app.use(express.static(path.join(__dirname, "static")));
 
 //endpoints
 
-app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
-app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos)
-app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos)
-app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda)
+//app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
+app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos);
+app.get(endPoints.VerPaxinaSobreNos,VerPaxinaSobreNos);
+app.get(endPoints.VerPaxinaTenda,VerPaxinaTenda);
 /** Rexistro usuario */
-const db = require('./bd/db')
-app.post('/rexistro', function(req, res) {
+const db = require('./bd/db.js')
+app.post('/rexistro', function(req, res,next) {
   let sampleFile;
   let uploadPath;
-  const conn = db.open()
+  //const db = db.open();
   const body = req.body;
   
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
   }
-  if(req.body != undefined){
-    
-
-    conn.serialize(function (){
-          conn.run(`INSERT INTO usuarios (dni_cli,pwd_cli,nombre_cli,email_cli) VALUES (?,?,?)`,[`${body.dni}`,`${body.pwd}`,`${body.usuario}`,`${body.email}`],
-            function (error) {
-              if (error) {
-                console.error(error.message);
-              }
-              
-            }
-          );
-        
-         conn.each(`SELECT * FROM usuarios`, (error, row) => {
-          if (error) {
-            throw new Error(error.message);
-          }
-          console.log(row);
-        },()=>{
-          res.redirect('/');
-          
-        });//conn.each
-
-              
-        });//conn.serialize
-
-
-
-
-
-
-    
-    res.redirect('/rexistro');
-    next();
-  }
-
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  let oBody = req.body;
-  console.log('o body: ',oBody)
   sampleFile = req.files.sampleFile;
   uploadPath = __dirname + '/' + sampleFile.name;
   console.log('uploadPath: ',uploadPath)
@@ -102,8 +64,35 @@ app.post('/rexistro', function(req, res) {
     if (err)
       return res.status(500).send(err);
 
-    res.send('File uploaded!');
+    //res.send('File uploaded!');
   });
+  if(req.body != undefined){
+    
+
+    db.serialize(function (){
+          db.run(`INSERT INTO usuarios (dni_cli,pwd_cli,nombre_cli,email_cli) VALUES (?,?,?,?)`,[`${body.dni}`,`${body.pwd}`,`${body.usuario}`,`${body.email}`],
+            function (error) {
+              if (error) {
+                console.error(error.message);
+              }
+              
+            }
+          );
+        
+         db.each(`SELECT * FROM usuarios`, (error, row) => {
+          if (error) {
+            throw new Error(error.message);
+          }
+          console.log(row);
+        },()=>{
+          /*res.redirect('/contacto');*/
+          
+        });//db.each
+    });//db.serialize
+    res.redirect('/contacto');
+    next();
+  }
 });
+app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
 //START SERVER
 app.listen(3000, messageServerOn);
