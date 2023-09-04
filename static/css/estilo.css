@@ -181,7 +181,7 @@ p[name="textoFotoHome"]{
   position: absolute;
   bottom:0px;
   left: 18px;
-  z-index: 2;
+  /*z-index: 2;*/
 }
 .imaxen-cabeceira{
   position:relative;

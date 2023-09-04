@@ -15,7 +15,6 @@ rl.on('SIGINT', () => {
 //
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const app = express();
@@ -28,7 +27,8 @@ const {	messageServerOn,
        VerPaxinaSobreNos,
        VerPaxinaTenda,
        BBDD_rexistroUser,
-       lerUsuario
+       lerUsuario,
+       leoUsuarioLogueado
        } = require("./principal-servers/helpers/funciones")
 
 //Preparo as peticións
@@ -42,12 +42,18 @@ app.use(express.static(path.join(__dirname, "static")));
 
 //endpoints
 
-//app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
-app.get(endPoints.VerPaxinaCursos,lerUsuario,VerPaxinaCursos);
-app.get(endPoints.VerPaxinaSobreNos,lerUsuario,VerPaxinaSobreNos);
-app.get(endPoints.VerPaxinaTenda,lerUsuario,VerPaxinaTenda);
-/** Rexistro usuario */
-app.post(endPoints.RexistroUser,BBDD_rexistroUser);
-app.get(endPoints.VerPaxinaContacto,lerUsuario,VerPaxinaContacto)
+  //app.get(endPoints.VerPaxinaContacto,VerPaxinaContacto)
+  app.post(endPoints.VerPaxinaCursos,lerUsuario);
+  app.get(endPoints.VerPaxinaCursos,VerPaxinaCursos);
+  app.get(endPoints.VerPaxinaSobreNos,lerUsuario,VerPaxinaSobreNos);
+  app.get(endPoints.VerPaxinaTenda,lerUsuario,VerPaxinaTenda);
+
+  /** Usuario */
+    /** Rexistro usuario */
+    app.post(endPoints.RexistroUser,BBDD_rexistroUser);
+    app.get(endPoints.VerPaxinaContacto,lerUsuario,VerPaxinaContacto)
+
+    /** Envio datos de usuario logueado */
+    app.get(endPoints.userLogueado,leoUsuarioLogueado)
 //START SERVER
 app.listen(3000, messageServerOn);

@@ -111,10 +111,11 @@ const lerUsuario = (req,res,next)=>{
            if (error) {
             throw new Error(error.message);
           }
-          next();
+          //next();
         })  
         });//db.serialize
   }
+  res.redirect('/cursos');
   next();
 }
 const leoUsuarioLogueado = function(req,res){
@@ -140,7 +141,8 @@ const endPoints = {
   VerPaxinaSobreNos:'/sobrenos',
   VerPaxinaTenda:'/tenda',
   RexistroUser:'/rexistro',
-  LoginUser:'/login'
+  LoginUser:'/login',
+  userLogueado:'/usuariologueado'
 }
 module.exports = {
 	messageServerOn,
