@@ -38,11 +38,13 @@
              <ul>
                 <li id="logueate" name="nav_user">Loguéate</li>
                <div id="login">
-                 <form name="login" action="/login" method="post">
+                 <!--<form id="miForm" name="login" action="/login" method="post">-->
+                 <form id="miForm">
                    <input name="user" type="text" placeholder="Introduce o teu usuario"> 
                    <input name="pwd" type="password" placeholder="Introduce o teu password"> 
                    <input name="email" type="text" placeholder="Introduce o teu email"> 
-                   <button class="texto-article1-fillo2 un-margin-center">Entrar</button>
+                   <!--<button class="texto-article1-fillo2 un-margin-center">Entrar</button>-->
+                   <input class="texto-article1-fillo2 un-margin-center" type="submit" value="Entrar">
                  </form>
                </div>
               </ul>
@@ -95,7 +97,17 @@
     </footer>
     <script>
       
-     
+     miForm.onclick = async (e) => {
+       e.preventDefault();
+
+        let response = await fetch('/login', {
+          method: 'POST',
+          body: new FormData(miForm)
+        });
+    
+        let result = await response.json();
+           console.log('result: ',result)
+     }
       /*document.addEventListener("DOMContentLoaded", async (e)=>{
         console.log("page is fully loaded");
           const response = await fetch('/usuariologueado');

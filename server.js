@@ -28,7 +28,8 @@ const {	messageServerOn,
        VerPaxinaTenda,
        BBDD_rexistroUser,
        lerUsuario,
-       leoUsuarioLogueado
+       leoUsuarioLogueado,
+       probaLectura
        } = require("./principal-servers/helpers/funciones")
 
 //Preparo as peticións
@@ -55,5 +56,6 @@ app.use(express.static(path.join(__dirname, "static")));
 
     /** Envio datos de usuario logueado */
     app.get(endPoints.userLogueado,leoUsuarioLogueado)
+    app.post(endPoints.LoginUser,probaLectura)
 //START SERVER
 app.listen(3000, messageServerOn);

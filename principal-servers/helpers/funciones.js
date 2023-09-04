@@ -24,9 +24,10 @@ const VerPaxinaContacto = (req,res)=>{
   //res.sendFile(nomeDaPaxina,{root: <carpetaOndeEsta>})
   res.sendFile(paxina.contacto,{root: directorioStatico})
 }
-const VerPaxinaCursos = (req,res)=>{
+const VerPaxinaCursos = (req,res,next)=>{
   //res.sendFile(nomeDaPaxina,{root: <carpetaOndeEsta>})
   res.sendFile(paxina.cursos,{root: directorioStatico})
+  //next();
 }
 const VerPaxinaSobreNos= (req,res)=>{
   //res.sendFile(nomeDaPaxina,{root: <carpetaOndeEsta>})
@@ -121,6 +122,7 @@ const lerUsuario = (req,res,next)=>{
 const leoUsuarioLogueado = function(req,res){
   
 console.log('está en leoUsuarioLogueado : ');
+  
   db.get(`SELECT * FROM usuarioslogueados ORDER BY nome ASC`,(error,row)=>{
     if (error) {
             throw new Error(error.message);
@@ -135,6 +137,18 @@ console.log('está en leoUsuarioLogueado : ');
     res.send(datosSend)
   })
 }
+
+const probaLectura = (req,res) => {
+  console.log('req.body: ',req.body)
+  db.get(`SELECT * FROM usuarios where nombre_cli = ?`,[`${req.body.user}`], (error, row) => {
+          if (error) {
+            throw new Error(error.message);
+          }
+          console.log(row);
+          res.send(row)
+        })
+}
+
 const endPoints = {
   VerPaxinaContacto: '/contacto',
   VerPaxinaCursos:'/cursos',
@@ -153,5 +167,6 @@ module.exports = {
   VerPaxinaTenda,
   BBDD_rexistroUser,
   lerUsuario,
-  leoUsuarioLogueado
+  leoUsuarioLogueado,
+  probaLectura
   }
