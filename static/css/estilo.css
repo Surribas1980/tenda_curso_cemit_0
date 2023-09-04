@@ -212,6 +212,9 @@ h2{
   text-transform: uppercase;
   cursor:pointer;
 }
+.texto-article1-fillo2:hover{
+  background-color: #86654B;
+}
 .texto-article1{
   display: flex;
   flex-direction: column;

@@ -5,7 +5,8 @@ const app = express();
 const db = require('../../bd/db.js')
 /////---CONSTANTES---////
 const directorioStatico = path.join(__dirname,'../../static/views')
-
+const staticRoute2 = path.join(__dirname,"../../imags")
+/*console.log('staticRoute2: ',staticRoute2)*/
 app.use(express.static(directorioStatico))
 
 ////
@@ -49,7 +50,7 @@ const BBDD_rexistroUser = (req, res,next)=>{
   }
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/' + sampleFile.name;
+  uploadPath = staticRoute2 + '/' + sampleFile.name;
   console.log('uploadPath: ',uploadPath)
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv(uploadPath, function(err) {
@@ -139,13 +140,17 @@ console.log('está en leoUsuarioLogueado : ');
 }
 
 const probaLectura = (req,res) => {
-  console.log('req.body: ',req.body)
+  console.log('req.body: ',req.body,'__dirname:',__dirname);
+  let usuario = "";
   db.get(`SELECT * FROM usuarios where nombre_cli = ?`,[`${req.body.user}`], (error, row) => {
           if (error) {
             throw new Error(error.message);
           }
           console.log(row);
           res.send(row)
+          usuario = row;
+          console.log('O usuario: ', usuario)
+          
         })
 }
 

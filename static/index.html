@@ -39,7 +39,7 @@
                 <li id="logueate" name="nav_user">Loguéate</li>
                <div id="login">
                  <!--<form id="miForm" name="login" action="/login" method="post">-->
-                 <form id="miForm">
+                 <form id="miForm" name="login">
                    <input name="user" type="text" placeholder="Introduce o teu usuario"> 
                    <input name="pwd" type="password" placeholder="Introduce o teu password"> 
                    <input name="email" type="text" placeholder="Introduce o teu email"> 
@@ -106,8 +106,16 @@
         });
     
         let result = await response.json();
-           console.log('result: ',result)
+           console.log('result: ',result.nombre_cli)
+       if(result.nombre_cli != undefined){
+         
+        localStorage.setItem("usuarioLogueado",result.nombre_cli)
+         let foto = `chicaCastana.png`;
+         usuarios.setAttribute("src",foto)
+       }
      }
+
+     
       /*document.addEventListener("DOMContentLoaded", async (e)=>{
         console.log("page is fully loaded");
           const response = await fetch('/usuariologueado');

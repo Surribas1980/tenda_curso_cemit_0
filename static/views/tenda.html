@@ -35,11 +35,13 @@
              <ul>
                 <li id="logueate" name="nav_user">Loguéate</li>
                <div id="login">
-                 <form name="login" action="/tenda" method="post">
-                  <input name="user" type="text" placeholder="Introduce o teu usuario"> 
-                  <input name="pwd" type="password" placeholder="Introduce o teu password"> 
-                  <input name="email" type="text" placeholder="Introduce o teu email"> 
-                  <button class="texto-article1-fillo2 un-margin-center">Entrar</button>
+                 <!--<form id="miForm" name="login" action="/login" method="post">-->
+                 <form id="miForm" name="login">
+                   <input name="user" type="text" placeholder="Introduce o teu usuario"> 
+                   <input name="pwd" type="password" placeholder="Introduce o teu password"> 
+                   <input name="email" type="text" placeholder="Introduce o teu email"> 
+                   <!--<button class="texto-article1-fillo2 un-margin-center">Entrar</button>-->
+                   <input class="texto-article1-fillo2 un-margin-center" type="submit" value="Entrar">
                  </form>
                </div>
               </ul>
@@ -126,6 +128,31 @@
     <footer>
       
     </footer>
+        <script>
+      
+     miForm.onclick = async (e) => {
+       e.preventDefault();
+
+        let response = await fetch('/login', {
+          method: 'POST',
+          body: new FormData(miForm)
+        });
     
+        let result = await response.json();
+           console.log('result: ',result.nombre_cli)
+        localStorage.setItem("usuarioLogueado",result.nombre_cli)
+       let foto = `./imagenes/chicoBarba.png`;
+       usuarios.setAttribute("src",foto)
+     }
+      /*document.addEventListener("DOMContentLoaded", async (e)=>{
+        console.log("page is fully loaded");
+          const response = await fetch('/usuariologueado');
+          const json = await response.json();
+          console.log('json: ',json)
+          
+          //h2.textContent = `Benvido ${json.nome}`
+        
+      });*/
+    </script>
   </body>
 </html>
